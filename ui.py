@@ -6,8 +6,9 @@ IMPORTANT INFO:
 
 """
 
-from Logic import calc,grade_calc,db,login,user
-from Logic.Clock import interface
+from Logic import calc,grade_calc as gc,db,login,user
+from Logic.Clock import interface as ci
+import sys
 
 print("Welcome To This App")
 name = input("What Is Your Name? \n")
@@ -24,7 +25,8 @@ app_options = [
     "Calculator",
     "Grade Calculator",
     "Notes",
-    "Clock"
+    "Clock",
+    "Quit"
 ]
 while True:
     print("Enter a password following these rules")
@@ -62,4 +64,21 @@ while True:
         print("\n")
         print(f"Please Enter a Number From 1 to {len(app_options)}")
 
+def runApp(app_num):
+    if app_num == 1:
+        calc.start()
+    if app_num == 2:
+        gc.start()
+    if app_num == 3:
+        db.start()
+    if app_num == 4:
+        ci.start()
+    if app_num == 5:
+        print(f"Thank you {name} for using this app. We hope you return soon")
+        sys.exit(0)
+
+
+#runApp(app_option)
+
 # python3 ui.py
+
