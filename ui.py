@@ -18,10 +18,11 @@ while True:
     for i in range(len(password_rules)):
         print(f"{i+1}. {password_rules[i]}")
     password = input("Enter A Password. \n")
-    valid = login.validate_password(password) or False
+    valid = login.validate_password(password) or False # NOT FUCTIONAL
     if valid:
         break
     print("\033[H\033[J", end="")
     print("The password you entered does not follow the rules")
+userData = user.createData(name,username,password) # NOT FUNCTIONAL
+user.saveUser(userData) # NOT FUNCTIONAL
 # python3 ui.py
-    
