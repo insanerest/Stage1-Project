@@ -25,7 +25,7 @@ app_options = [
     "Calculator",
     "Grade Calculator",
     "Notes",
-    "Clock"
+    "Clock",
     "Quit"
 ]
 while True:
