@@ -73,7 +73,7 @@ def runApp(app_num):
         db.start()
     if app_num == 4:
         ci.start()
-    if app_num == 4:
+    if app_num == 5:
         print(f"Thank you {name} for using this app. We hope you return soon")
         sys.exit(0)
 
