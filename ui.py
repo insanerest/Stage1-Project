@@ -6,7 +6,7 @@ IMPORTANT INFO:
 
 """
 
-from Logic import calc,grade_calc as gc,db,login,user
+from Logic import calc,grade_calc as gc,login, notes,user
 from Logic.Clock import interface as ci
 import sys
 
@@ -70,7 +70,7 @@ def runApp(app_num):
     if app_num == 2:
         gc.start()
     if app_num == 3:
-        db.start()
+        notes.start()
     if app_num == 4:
         ci.start()
     if app_num == 5:
