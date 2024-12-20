@@ -47,8 +47,6 @@ def validate_password(password):
 
 
 
-validate_password("Sec0rePassword!")
-
 # python3 login.py
 
     
