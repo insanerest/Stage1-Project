@@ -38,6 +38,5 @@ def start():
         subject_grades.append(subject_grade)
     calculate(subject_grades, subjects)
 
-start()
 
 # python3 grade_calc.py
