@@ -6,7 +6,7 @@ IMPORTANT INFO:
 
 """
 
-from Logic import calc,grade_calc as gc,login, notes,user
+from Logic import average_grade_calc as gc, calc,login, notes,user
 from Logic.Clock import interface as ci
 import sys
 
