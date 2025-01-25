@@ -40,14 +40,12 @@ def validate_password(password):
         valid = False
         errors += "Password Must Contain A Special Charecter \n"
 
-    print(f"{password} Validity is {valid}")
+    print("\033[H\033[J", end="")
     print(errors)
     return valid
 
 
 
-
-validate_password("Sec0rePassword!")
 
 # python3 login.py
 
