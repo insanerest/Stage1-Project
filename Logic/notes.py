@@ -49,9 +49,5 @@ def getAllNotes(username, JSONpath):
     else:
         return True
     
-saveNote("new1", "this is the note number 1", "abd123", "./data.json")
-saveNote("new2", "this is the note number 2", "abd123", "./data.json")
-saveNote("new3", "this is the note number 3", "abd123", "./data.json")
-print(getNote("new2", "abd123", "./data.json"))
-print(getAllNotes("abd123", "./data.json"))
+
 # python3 notes.py
