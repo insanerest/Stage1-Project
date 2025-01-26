@@ -35,12 +35,10 @@ def promptLogin():
             for i in range(len(password_rules)):
                 print(f"{i+1}. {password_rules[i]}")
             password = input("Enter A Password. \n")
-            #valid = login.validate_password(password) or False
-            valid = True #RAF
+            valid = login.validate_password(password) or False
+            #valid = True #RAF
             if valid:
                 break
-            print("\033[H\033[J", end="")
-            print("The password you entered does not follow the rules")
         userData = user.createData(name,username,password)
         isUser = user.isUser(userData.get("username"), "./Logic/data.json")
         #isUser = False #RAF
