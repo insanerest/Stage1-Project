@@ -6,12 +6,13 @@ IMPORTANT INFO:
 
 """
 
-from Logic import calc,average_grade_calc as gc,login, notes,user
+from Logic import calc,average_grade_calc as gc,login,user
 from Logic.Clock import interface as ci
 import sys
 
 print("Welcome To This App")
 name = input("What Is Your Name? \n")
+username = None
 print(f"Well Hello {name}")
 password_rules= ["Minimum 8 characters",
          "At least one uppercase letter",
@@ -23,12 +24,30 @@ password_rules= ["Minimum 8 characters",
 app_options = [
     "Calculator",
     "Grade Calculator",
-    "Notes",
     "Clock",
     "Quit"
 ]
+
+
+def promtApp():
+    while True:
+        print("Enter a number to get started")
+        for i in range(len(app_options)):
+            print(f"{i+1}. {app_options[i]}")
+        app_option = input("Number\n > ")
+        app_option = int(app_option) if app_option.isdigit() else app_option
+        if type(app_option) is int and app_option < len(app_options) + 1:
+            break
+        else:
+            print("\n")
+            print("INVALID INPUT")
+            print("\n")
+            print(f"Please Enter a Number From 1 to {len(app_options)}")
+    runApp(app_option)
+
 def promptLogin():
     while True:
+        global username
         username = input("Please enter the username you have registed or want to register with. \n")
         while True:
             print("Enter a password following these rules")
@@ -56,38 +75,31 @@ def promptLogin():
             print("Created Account and made Login")
             break
             #placeholder = "" #RAF
+    promtApp()
 
 promptLogin()
 
-while True:
-    print("Enter a number to get started")
-    for i in range(len(app_options)):
-        print(f"{i+1}. {app_options[i]}")
-    app_option = input("Number\n > ")
-    app_option = int(app_option) if app_option.isdigit() else app_option
-    if type(app_option) is int and app_option < len(app_options) + 1:
-        break
-    else:
-        print("\n")
-        print("INVALID INPUT")
-        print("\n")
-        print(f"Please Enter a Number From 1 to {len(app_options)}")
+
+
+def calcStart():
+    calc.start()
+
+def gcStart():
+    gc.start()
+
+def ciStart():
+    ci.start()
 
 def runApp(app_num):
     if app_num == 1:
-        calc.start()
+        calcStart()
     if app_num == 2:
-        gc.start()
+        gcStart()
     if app_num == 3:
-        notes.start()
+        ciStart()
     if app_num == 4:
-        ci.start()
-    if app_num == 5:
         print(f"Thank you {name} for using this app. We hope you return soon")
         sys.exit(0)
-
-
-#runApp(app_option)
 
 # python3 ui.py
 
