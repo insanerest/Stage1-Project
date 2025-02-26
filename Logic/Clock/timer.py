@@ -18,8 +18,6 @@ def timerStart():
     timer_label = tk.Label(root, text="")
     timer_label.pack()
 
-    root.mainloop()
-
     def start_timer():
         try:
             seconds = int(timer_entry.get())
@@ -39,3 +37,4 @@ def timerStart():
         except ValueError:
             messagebox.showerror("Error", "Enter a valid number!")
 
+    root.mainloop()

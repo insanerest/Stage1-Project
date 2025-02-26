@@ -28,3 +28,4 @@ def timeStart():
     tk.Button(root, text="Get Time", command=get_time).pack()
     time_label = tk.Label(root, text="")
     time_label.pack()
+    root.mainloop()
