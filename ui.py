@@ -8,6 +8,7 @@ IMPORTANT INFO:
 
 from Logic import calc,average_grade_calc as gc,login,user
 from Logic.Clock import interface as ci
+from Logic import brodcast
 import sys
 
 print("Welcome To This App")
@@ -100,6 +101,8 @@ def runApp(app_num):
     if app_num == 4:
         print(f"Thank you {name} for using this app. We hope you return soon")
         sys.exit(0)
+
+brodcast.listen("Choose App", runApp)
 
 # python3 ui.py
 
