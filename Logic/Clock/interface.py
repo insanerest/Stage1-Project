@@ -1,6 +1,5 @@
-from Clock import time, timer
-from Logic import brodcast
-
+from Logic.Clock import time, timer
+from Logic.broadcast import broadcast
 def start():
     print("Welcome to the clock app")
     while True:
@@ -14,5 +13,9 @@ def start():
             timer.timerStart()
         elif choice == "3":
             print("Returning Back")
-            brodcast.fire("Choose App")
-            
+            broadcast.fire("Choose App")
+            return
+
+if __name__ == "__main__":
+    while True:
+        broadcast.listen("Clock Interface", start)
