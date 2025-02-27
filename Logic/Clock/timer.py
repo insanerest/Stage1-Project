@@ -2,21 +2,9 @@ import tkinter as tk
 from tkinter import messagebox
 import time
 import threading
-import os
-from datetime import datetime
+from Logic.broadcast import broadcast
 
-
-def timerStart():
-    root = tk.Tk()
-    root.title("World Clock & Timer")
-    root.geometry("400x300")
-
-    tk.Label(root, text="Set Timer (seconds):").pack()
-    timer_entry = tk.Entry(root)
-    timer_entry.pack()
-    tk.Button(root, text="Start Timer", command=start_timer).pack()
-    timer_label = tk.Label(root, text="")
-    timer_label.pack()
+def mainLoop():
 
     def start_timer():
         try:
@@ -24,6 +12,7 @@ def timerStart():
             if seconds <= 0:
                 messagebox.showerror("Error", "Enter a valid number of seconds!")
                 return
+
             def countdown():
                 nonlocal seconds
                 while seconds >= 0:
@@ -33,8 +22,34 @@ def timerStart():
                     time.sleep(1)
                     seconds -= 1
                 timer_label.config(text="Time's up!")
+
             threading.Thread(target=countdown, daemon=True).start()
         except ValueError:
             messagebox.showerror("Error", "Enter a valid number!")
 
-    root.mainloop()
+    root = tk.Tk()
+    root.title("World Clock & Timer")
+    root.geometry("400x300")
+
+    try:
+        tk.Label(root, text="Set Timer (seconds):").pack()
+        timer_entry = tk.Entry(root)
+        timer_entry.pack()
+        tk.Button(root, text="Start Timer", command=start_timer).pack()
+        timer_label = tk.Label(root, text="")
+        timer_label.pack()
+        root.mainloop()
+    except:
+        timerStart()
+def timerStart():
+    while True:
+        print("1. Set Timer")
+        print("2. Back")
+        choice = input("Enter your choice: ")
+        if choice == "1":
+            print("Im")
+            mainLoop()
+        elif choice == "2":
+            print("Returning Back")
+            broadcast.fire("Clock Interface")
+            return

@@ -1,11 +1,10 @@
 import tkinter as tk
 from tkinter import messagebox
-import time
-import threading
 import os
 from datetime import datetime
+from Logic.broadcast import broadcast
 
-def timeStart():
+def mainLoop():
     def get_time():
         city = city_entry.get()
         if not city:
@@ -14,7 +13,9 @@ def timeStart():
         try:
             timezone = os.popen("date +%Z").read().strip()
             city_time = datetime.now()
-            time_label.config(text=f"Time in {city}: {city_time.strftime('%H:%M:%S')} ({timezone})")
+            time_label.config(
+                text=f"Time in {city}: {city_time.strftime('%H:%M:%S')} ({timezone})"
+            )
         except Exception as e:
             messagebox.showerror("Error", f"An error occurred: {e}")
 
@@ -29,3 +30,15 @@ def timeStart():
     time_label = tk.Label(root, text="")
     time_label.pack()
     root.mainloop()
+
+def timeStart():
+    while True:
+        print("1. Get Time")
+        print("2. Back")
+        choice = input("Enter your choice: ")
+        if choice == "1":
+            mainLoop()
+        elif choice == "2":
+            print("Returning Back")
+            broadcast.fire("Clock Interface")
+            return

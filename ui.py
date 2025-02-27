@@ -8,8 +8,9 @@ IMPORTANT INFO:
 
 from Logic import calc,average_grade_calc as gc,login,user
 from Logic.Clock import interface as ci
-from Logic import brodcast
+from Logic.broadcast import broadcast
 import sys
+
 
 print("Welcome To This App")
 name = input("What Is Your Name? \n")
@@ -28,6 +29,28 @@ app_options = [
     "Clock",
     "Quit"
 ]
+
+
+def calcStart():
+    calc.start()
+
+
+def gcStart():
+    gc.start()
+
+def ciStart():
+    ci.start()
+
+def runApp(app_num):
+    if app_num == 1:
+        calcStart()
+    if app_num == 2:
+        gcStart()
+    if app_num == 3:
+        ciStart()
+    if app_num == 4:
+        print(f"Thank you {name} for using this app. We hope you return soon")
+        sys.exit(0)
 
 
 def promtApp():
@@ -80,29 +103,7 @@ def promptLogin():
 
 promptLogin()
 
-
-
-def calcStart():
-    calc.start()
-
-def gcStart():
-    gc.start()
-
-def ciStart():
-    ci.start()
-
-def runApp(app_num):
-    if app_num == 1:
-        calcStart()
-    if app_num == 2:
-        gcStart()
-    if app_num == 3:
-        ciStart()
-    if app_num == 4:
-        print(f"Thank you {name} for using this app. We hope you return soon")
-        sys.exit(0)
-
-brodcast.listen("Choose App", runApp)
+while True:
+    broadcast.listen("Choose App", promtApp())
 
 # python3 ui.py
-
