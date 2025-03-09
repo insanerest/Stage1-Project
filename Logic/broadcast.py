@@ -10,7 +10,10 @@ class Broadcast:
     def fire(self, event_name, *args, **kwargs):
         if event_name in self.listeners:
             for callback in self.listeners[event_name]:
-                callback(*args, **kwargs)
+                if callable(callback):
+                    callback(*args, **kwargs)
+                else:
+                    print(f"[WARN] Event '{event_name}' has a non-callable listener: {callback}")
 
 # Create a global event manager instance
 broadcast = Broadcast()

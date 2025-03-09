@@ -61,13 +61,12 @@ def promtApp():
         app_option = input("Number\n > ")
         app_option = int(app_option) if app_option.isdigit() else app_option
         if type(app_option) is int and app_option < len(app_options) + 1:
-            break
+            runApp(app_option)
         else:
             print("\n")
             print("INVALID INPUT")
             print("\n")
             print(f"Please Enter a Number From 1 to {len(app_options)}")
-    runApp(app_option)
 
 def promptLogin():
     while True:
@@ -103,7 +102,6 @@ def promptLogin():
 
 promptLogin()
 
-while True:
-    broadcast.listen("Choose App", promtApp())
+
 
 # python3 ui.py
